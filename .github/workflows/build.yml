@@ -8,7 +8,10 @@ jobs:
     container: devkitpro/devkitarm
     steps:
       - uses: actions/checkout@v4
-      - run: make
+      - name: Build ROM
+        run: |
+          export PATH=/opt/devkitpro/devkitARM/bin:/opt/devkitpro/tools/bin:$PATH
+          make
       - uses: actions/upload-artifact@v4
         with:
           name: pkstorage-gba
